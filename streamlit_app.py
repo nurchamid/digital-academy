@@ -1,9 +1,8 @@
-# %%writefile app.py
+%%writefile app.py
 
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 import nltk
@@ -112,10 +111,8 @@ if sentiment == 'all' :
   col1, col2 = st.columns(2)
 
   # Word cloud of the text with the negative sentiment
-  # df_neg = data.loc[data.sentiment == 'negative', 'text']
   k = (' '.join(data['text']))
   wordcloud = WordCloud(width = 800, height = 600, background_color = 'white').generate(k)
-  # plt.figure(figsize=(15, 10))
   col1.plotly_chart(px.imshow(wordcloud, title='Top Word'))
 
   # bigram
@@ -157,7 +154,6 @@ else :
   # Word cloud of the text with the X sentiment
   k = (' '.join(data2['text']))
   wordcloud = WordCloud(width = 800, height = 600, background_color = 'white').generate(k)
-  # plt.figure(figsize=(15, 10))
   col1.plotly_chart(px.imshow(wordcloud, title='Top Word'))
 
   # bigram
