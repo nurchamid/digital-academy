@@ -2,3 +2,4 @@
 # py -3 -m pip install "pywin32>=301" or py -m pip install pywin32>=300
 plotly==5.4.0
 nltk==3.6.5
+wordcloud==1.8.1
