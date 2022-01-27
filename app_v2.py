@@ -28,7 +28,8 @@ import requests
 st.set_page_config(layout = "wide")
 
 # Import data
-train = pd.read_csv('./data-registry/train.csv')
+# train = pd.read_csv('./data-registry/train.csv')
+train=pd.read_csv('https://raw.githubusercontent.com/nurchamid/dashboard_streamlit/main/data-registry/train.csv')
 train['dataset'] = 'train'
 # Import pickle model
 mLink = 'https://github.com/nurchamid/dashboard_streamlit/blob/main/model_v1.pkl?raw=true'
