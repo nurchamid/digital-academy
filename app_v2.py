@@ -18,7 +18,7 @@ import plotly.graph_objects as go
 
 from collections import Counter
 from nltk import ngrams
-from nltk.tokenize import word_tokenize
+# from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
 
