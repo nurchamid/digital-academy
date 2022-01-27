@@ -22,11 +22,18 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
 
+from io import BytesIO
+import requests
+
 st.set_page_config(layout = "wide")
 
 # Import data
 train = pd.read_csv('./data-registry/train.csv')
 train['dataset'] = 'train'
+# Import pickle model
+mLink = 'https://github.com/nurchamid/dashboard_streamlit/blob/main/model_v1.pkl?raw=true'
+mfile = BytesIO(requests.get(mLink).content)
+loaded_model = pickle.load(mfile)
 
 # Import data for prediction
 pred_train = train[['text','sentiment', 'dataset']]
@@ -171,7 +178,7 @@ else :
             train, pred = utils_for_dashboard.data_preproc(df)
             bow_train, bow_pred = utils_for_dashboard.bag_of_words(train, pred)
             col = utils_for_dashboard.get_bow_columns(bow_train)
-            loaded_model = pickle.load(open('model_v1.pkl', 'rb'))
+            # loaded_model = pickle.load(open('model_v1.pkl', 'rb'))
             final_pred_result=utils_for_dashboard.predict_data(pred, bow_pred, col, loaded_model)
 
             # show results
@@ -201,7 +208,7 @@ else :
         train, pred = utils_for_dashboard.data_preproc(df)
         bow_train, bow_pred = utils_for_dashboard.bag_of_words(train, pred)
         col = utils_for_dashboard.get_bow_columns(bow_train)
-        loaded_model = pickle.load(open('model_v1.pkl', 'rb'))
+        # loaded_model = pickle.load(open('model_v1.pkl', 'rb'))
         final_pred_result=utils_for_dashboard.predict_data(pred, bow_pred, col, loaded_model)
         st.write('Sentiment results')
         st.write('Total tweets containing your word : ', final_pred_result.shape[0])
