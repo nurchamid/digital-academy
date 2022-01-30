@@ -22,6 +22,9 @@ from nltk import ngrams
 from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
 
+from io import BytesIO
+import requests
+
 st.set_page_config(layout = "wide")
 
 # Import data
