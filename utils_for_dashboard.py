@@ -4,7 +4,7 @@ import re
 from sklearn.feature_extraction.text import CountVectorizer
 from collections import Counter
 from nltk import ngrams
-from nltk.tokenize import word_tokenize
+from nltk import word_tokenize
 import nltk
 nltk.download('stopwords')
 nltk.download('wordnet')
