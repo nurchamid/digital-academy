@@ -9,6 +9,7 @@ import nltk
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
+nltk.download('punkt')
 
 def tokenization(text):
     # Word Tokenization
@@ -117,13 +118,13 @@ def predict_data(pred, bow_pred, col, loaded_model):
 
     return final_pred_result
 
-# def pre_bigram(data, parameter) : 
-#     df_data_pos = " ".join(data['cleansed_text2'])
-#     token_text_pos = word_tokenize(df_data_pos)
-#     bigrams_pos = ngrams(token_text_pos, parameter)
-#     frequency_pos = Counter(bigrams_pos)
-#     df_pos = pd.DataFrame(frequency_pos.most_common(10))
-#     df_pos['word']=df_pos[0].apply(lambda x : ' '.join(x))
-#     df_pos['total tweet']=df_pos[1]
-#     df_pos=df_pos.sort_values(by='total tweet', ascending=True)
-#     return df_pos
+def pre_bigram(data, parameter) : 
+    df_data_pos = " ".join(data['cleansed_text2'])
+    token_text_pos = word_tokenize(df_data_pos)
+    bigrams_pos = ngrams(token_text_pos, parameter)
+    frequency_pos = Counter(bigrams_pos)
+    df_pos = pd.DataFrame(frequency_pos.most_common(10))
+    df_pos['word']=df_pos[0].apply(lambda x : ' '.join(x))
+    df_pos['total tweet']=df_pos[1]
+    df_pos=df_pos.sort_values(by='total tweet', ascending=True)
+    return df_pos
