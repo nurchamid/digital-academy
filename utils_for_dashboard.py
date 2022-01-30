@@ -103,27 +103,27 @@ def get_bow_columns(df_bow):
             col.append(i)
     return col
 
-# def predict_data(pred, bow_pred, col, loaded_model):
-#     # predict data
-#     bow_pred['sentiment_result']=loaded_model.predict(bow_pred[col])
+def predict_data(pred, bow_pred, col, loaded_model):
+    # predict data
+    bow_pred['sentiment_result']=loaded_model.predict(bow_pred[col])
 
-#     # merge with original data
-#     pred_result=pd.concat([pred,bow_pred[['sentiment_result']]],1)
+    # merge with original data
+    pred_result=pd.concat([pred,bow_pred[['sentiment_result']]],1)
 
-#     # convert result
-#     pred_result['sentiment_result']=np.where(pred_result['sentiment_result']==0, 'neutral',
-#         np.where(pred_result['sentiment_result']==1, 'positive', 'negative'))
-#     final_pred_result=pred_result[['text', 'sentiment_result']]
+    # convert result
+    pred_result['sentiment_result']=np.where(pred_result['sentiment_result']==0, 'neutral',
+        np.where(pred_result['sentiment_result']==1, 'positive', 'negative'))
+    final_pred_result=pred_result[['text', 'sentiment_result']]
 
     return final_pred_result
 
-def pre_bigram(data, parameter) : 
-    df_data_pos = " ".join(data['cleansed_text2'])
-    token_text_pos = word_tokenize(df_data_pos)
-    bigrams_pos = ngrams(token_text_pos, parameter)
-    frequency_pos = Counter(bigrams_pos)
-    df_pos = pd.DataFrame(frequency_pos.most_common(10))
-    df_pos['word']=df_pos[0].apply(lambda x : ' '.join(x))
-    df_pos['total tweet']=df_pos[1]
-    df_pos=df_pos.sort_values(by='total tweet', ascending=True)
-    return df_pos
+# def pre_bigram(data, parameter) : 
+#     df_data_pos = " ".join(data['cleansed_text2'])
+#     token_text_pos = word_tokenize(df_data_pos)
+#     bigrams_pos = ngrams(token_text_pos, parameter)
+#     frequency_pos = Counter(bigrams_pos)
+#     df_pos = pd.DataFrame(frequency_pos.most_common(10))
+#     df_pos['word']=df_pos[0].apply(lambda x : ' '.join(x))
+#     df_pos['total tweet']=df_pos[1]
+#     df_pos=df_pos.sort_values(by='total tweet', ascending=True)
+#     return df_pos
