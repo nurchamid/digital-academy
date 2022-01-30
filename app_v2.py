@@ -22,18 +22,6 @@ from nltk import ngrams
 from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
 
-from sklearn.feature_extraction.text import CountVectorizer
-from collections import Counter
-from nltk import ngrams
-from nltk import word_tokenize
-import nltk
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
-
-from io import BytesIO
-import requests
-
 st.set_page_config(layout = "wide")
 
 # Import data
@@ -89,14 +77,6 @@ if menu == 'Explore':
 
       col1, col2 = st.columns(2)
 
-      df_data_pos = " ".join(data['cleansed_text2'])
-      token_text_pos = word_tokenize(df_data_pos)
-      bigrams_pos = ngrams(token_text_pos, parameter)
-      frequency_pos = Counter(bigrams_pos)
-      df_pos = pd.DataFrame(frequency_pos.most_common(10))
-      df_pos['word']=df_pos[0].apply(lambda x : ' '.join(x))
-      df_pos['total tweet']=df_pos[1]
-      df_pos=df_pos.sort_values(by='total tweet', ascending=True)
       df_pos=utils_for_dashboard.pre_bigram(data, 1)
       figure1 = px.bar(df_pos, x='total tweet', y='word', orientation='h')
       figure1.update_layout(title_text='Top 10 Bigrams',
