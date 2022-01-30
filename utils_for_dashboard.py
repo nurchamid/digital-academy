@@ -103,17 +103,17 @@ def get_bow_columns(df_bow):
             col.append(i)
     return col
 
-def predict_data(pred, bow_pred, col, loaded_model):
-    # predict data
-    bow_pred['sentiment_result']=loaded_model.predict(bow_pred[col])
+# def predict_data(pred, bow_pred, col, loaded_model):
+#     # predict data
+#     bow_pred['sentiment_result']=loaded_model.predict(bow_pred[col])
 
-    # merge with original data
-    pred_result=pd.concat([pred,bow_pred[['sentiment_result']]],1)
+#     # merge with original data
+#     pred_result=pd.concat([pred,bow_pred[['sentiment_result']]],1)
 
-    # convert result
-    pred_result['sentiment_result']=np.where(pred_result['sentiment_result']==0, 'neutral',
-        np.where(pred_result['sentiment_result']==1, 'positive', 'negative'))
-    final_pred_result=pred_result[['text', 'sentiment_result']]
+#     # convert result
+#     pred_result['sentiment_result']=np.where(pred_result['sentiment_result']==0, 'neutral',
+#         np.where(pred_result['sentiment_result']==1, 'positive', 'negative'))
+#     final_pred_result=pred_result[['text', 'sentiment_result']]
 
     return final_pred_result
 
