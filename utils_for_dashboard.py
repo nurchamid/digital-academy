@@ -4,12 +4,11 @@ import re
 from sklearn.feature_extraction.text import CountVectorizer
 from collections import Counter
 from nltk import ngrams
-from nltk import word_tokenize
+from nltk.tokenize import word_tokenize
 import nltk
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
-nltk.download('punkt')
 
 def tokenization(text):
     # Word Tokenization
