@@ -6,9 +6,8 @@ from collections import Counter
 from nltk import ngrams
 from nltk.tokenize import word_tokenize
 import nltk
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
+from nltk.corpus import stopwords
+from nltk.corpus import wordnet
 
 def tokenization(text):
     # Word Tokenization
